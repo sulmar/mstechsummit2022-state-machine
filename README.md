@@ -37,6 +37,10 @@ Maszyna może znajdować się tylko w jednym ze stanów w danym momencie.
 - **Stan końcowy** Stan osiągany na koniec pracy. Maszyna może posiadach kilka stanów końcowych (np. zrealizowane, anulowane).
 
 
+## Mapa myśli
+
+![Mapa myśli](drafts/state-machine-mindmap.png)
+
 ## Implementacja
 1. Instalacja biblioteki
 ~~~ bash
