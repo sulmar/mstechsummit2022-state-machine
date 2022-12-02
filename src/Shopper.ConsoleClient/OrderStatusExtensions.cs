@@ -14,8 +14,7 @@ internal static class OrderStatusExtensions
     // Metoda wytwórcza (fabrykująca)
     private static ConsoleColor Create(OrderStatus orderStatus) => orderStatus switch
     {
-        OrderStatus.Pending => ConsoleColor.DarkYellow,
-        OrderStatus.Completation => ConsoleColor.Magenta,
+        OrderStatus.Pending => ConsoleColor.DarkYellow,        
         OrderStatus.Sent => ConsoleColor.Green,
         OrderStatus.Delivered => ConsoleColor.Blue,
         OrderStatus.Completed => ConsoleColor.Black,

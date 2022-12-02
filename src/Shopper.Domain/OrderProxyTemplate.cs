@@ -20,12 +20,8 @@ public class OrderProxyTemplate : Order
             s => status = s);
 
         machine.Configure(OrderStatus.Pending)            
-            .Permit(OrderTrigger.Confirm, OrderStatus.Completation)
-            .Permit(OrderTrigger.Cancel, OrderStatus.Cancelled);      
-
-        machine.Configure(OrderStatus.Completation)
             .Permit(OrderTrigger.Confirm, OrderStatus.Sent)
-            .Permit(OrderTrigger.Cancel, OrderStatus.Cancelled);
+            .Permit(OrderTrigger.Cancel, OrderStatus.Cancelled);      
 
         machine.Configure(OrderStatus.Sent)
             .OnEntry(() => Console.WriteLine($"Your order {Id} is ready to send."), "Send email")

@@ -6,7 +6,7 @@ public class Order
     public decimal TotalAmount { get; set; }
     public virtual OrderStatus Status { get; set; }
 
-    public virtual bool CanConfirm => Status == OrderStatus.Pending || Status == OrderStatus.Completation || Status == OrderStatus.Sent || Status == OrderStatus.Delivered;
+    public virtual bool CanConfirm => Status == OrderStatus.Pending || Status == OrderStatus.Sent || Status == OrderStatus.Delivered;
     public virtual bool CanCancel => Status == OrderStatus.Pending || Status == OrderStatus.Delivered;
     public Order(OrderStatus status = OrderStatus.Pending)
     {
@@ -19,14 +19,8 @@ public class Order
     {
         if (Status == OrderStatus.Pending)
         {
-            Status =  OrderStatus.Completation;
-        }
-        else if (Status == OrderStatus.Completation)
-        {
-            Console.WriteLine($"Your order {Id} is ready to send.");
-            Status = OrderStatus.Sent;
-            Console.WriteLine($"Your order {Id} was sent.");
-        }
+            Status =  OrderStatus.Sent;
+        }       
         else if (Status == OrderStatus.Sent)
         {
             Status = OrderStatus.Delivered;
@@ -48,8 +42,7 @@ public class Order
 
 public enum OrderStatus
 {
-    Pending,    
-    Completation,
+    Pending,        
     Sent,
     Delivered,
     Completed,
